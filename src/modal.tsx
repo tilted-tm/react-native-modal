@@ -659,6 +659,13 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
         });
     }
   };
+
+  renderPanView = (panHandlers: {}) => (
+    <View style={styles.panTouchView} {...panHandlers}>
+      <View style={styles.modalHeader} />
+    </View>
+  );
+
   makeBackdrop = () => {
     if (!this.props.hasBackdrop) {
       return null;
@@ -780,7 +787,10 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
         pointerEvents="box-none"
         useNativeDriver={useNativeDriver}
         {...containerProps}>
-        {_children}
+        <View style={styles.container}>
+          {_children}
+          {this.renderPanView(panHandlers)}
+        </View>
       </animatable.View>
     );
 
