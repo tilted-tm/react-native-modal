@@ -781,7 +781,6 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
       );
     const containerView = (
       <animatable.View
-        {...panHandlers}
         ref={ref => (this.contentRef = ref)}
         style={[panPosition, computedStyle]}
         pointerEvents="box-none"
